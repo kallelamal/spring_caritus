@@ -13,9 +13,15 @@ public class MedecinMetierImpl implements MedecinMetier{
 	private MedecinRepository medecinRepository;
 
 	@Override
-	public Medecin addMedecin(Medecin m) {
+	public Medecin signupMedecin(Medecin m) {
 		// TODO Auto-generated method stub
 		return medecinRepository.save(m);
+	}
+
+	@Override
+	public Medecin signinMedecin(String login, String password) {
+		// TODO Auto-generated method stub
+		return medecinRepository.signinMedecin(login, password)	;
 	}
 	
 	@Override
@@ -29,6 +35,4 @@ public class MedecinMetierImpl implements MedecinMetier{
 		// TODO Auto-generated method stub
 		return medecinRepository.getMedecinByValidation(validation);
 	}
-
-	
 }

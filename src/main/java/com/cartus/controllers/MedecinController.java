@@ -15,9 +15,14 @@ public class MedecinController {
 	@Autowired
 	private  MedecinMetier medecinMetier;
 
-	@RequestMapping(value="/addMedecin",method=RequestMethod.POST)
-	public Medecin addMedecin(Medecin m) {
-		return medecinMetier.addMedecin(m);
+	@RequestMapping(value="/signupMedecin",method=RequestMethod.POST)
+	public Medecin signupMedecin(Medecin m) {
+		return medecinMetier.signupMedecin(m);
+	}
+
+	@RequestMapping(value="/signinMedecin",method=RequestMethod.GET)
+	public Medecin signinMedecin(String login, String password) {
+		return medecinMetier.signinMedecin(login, password);
 	}
 
 	@RequestMapping(value="/getAllMedecin",method=RequestMethod.GET)
