@@ -24,6 +24,7 @@ public class MedecinController {
 		return medecinMetier.signupMedecin(m);
 	}*/
 	
+	
 	@RequestMapping(value="/signupMedecin",method=RequestMethod.POST)
 	public Medecin signupMedecin(@RequestBody String m) throws Exception {
 			
