@@ -32,6 +32,7 @@ public class MedecinController {
 
 		}
 
+	
 
 	@RequestMapping(value="/signinMedecin",method=RequestMethod.GET)
 	public Medecin signinMedecin(String login, String password) {
