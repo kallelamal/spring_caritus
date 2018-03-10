@@ -1,8 +1,6 @@
 package com.cartus.controllers;
 
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,20 +17,11 @@ public class MedecinController {
 	@Autowired
 	private  MedecinMetier medecinMetier;
 
-	/*@RequestMapping(value="/signupMedecin",method=RequestMethod.POST)
-	public Medecin signupMedecin(Medecin m) {
-		return medecinMetier.signupMedecin(m);
-	}*/
-	
 	@RequestMapping(value="/signupMedecin",method=RequestMethod.POST)
 	public Medecin signupMedecin(@RequestBody String m) throws Exception {
-			
 		Medecin med=json.fromJson(m,Medecin.class);
 		return medecinMetier.signupMedecin(med);
-
-		}
-
-	
+	}
 
 	@RequestMapping(value="/signinMedecin",method=RequestMethod.GET)
 	public Medecin signinMedecin(String login, String password) {
