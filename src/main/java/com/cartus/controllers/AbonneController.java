@@ -13,14 +13,12 @@ import com.google.gson.Gson;
 
 @RestController
 public class AbonneController {
-	Gson json =new Gson();
 	@Autowired
 	private  AbonneMetier abonneMetier;
 
 	@RequestMapping(value="/signupAbonne",method=RequestMethod.POST)
-	public Abonne signupAbonne(@RequestBody String a) throws Exception {
-		Abonne ab=json.fromJson(a,Abonne.class);
-		return abonneMetier.signupAbonne(ab);
+	public Abonne signupAbonne(@RequestBody Abonne a) throws Exception {
+		return abonneMetier.signupAbonne(a);
 	}
 
 	@RequestMapping(value="/signinAbonne",method=RequestMethod.GET)
@@ -32,6 +30,4 @@ public class AbonneController {
 	public List<Abonne> getAllAbonne() {
 		return abonneMetier.getAllAbonne();
 	}
-
-	
 }

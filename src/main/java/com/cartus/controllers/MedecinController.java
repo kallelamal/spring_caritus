@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cartus.entities.Medecin;
 import com.cartus.metier.MedecinMetier;
-import com.google.gson.Gson;
 
 @RestController
 public class MedecinController {
-	Gson json =new Gson();
 	@Autowired
 	private  MedecinMetier medecinMetier;
 
 	@RequestMapping(value="/signupMedecin",method=RequestMethod.POST)
-	public Medecin signupMedecin(@RequestBody String m) throws Exception {
-		Medecin med=json.fromJson(m,Medecin.class);
-		return medecinMetier.signupMedecin(med);
+	public Medecin signupMedecin(@RequestBody Medecin m) {
+		return medecinMetier.signupMedecin(m);
 	}
 
 	@RequestMapping(value="/signinMedecin",method=RequestMethod.GET)
@@ -37,5 +34,4 @@ public class MedecinController {
 	public List<Medecin> getMedecinByValidation(int validation) {
 		return medecinMetier.getMedecinByValidation(validation);
 	}
-
 }
