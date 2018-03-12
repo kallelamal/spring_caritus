@@ -28,7 +28,7 @@ public class MedecinController {
 		if (med == null)
 			 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-		return new ResponseEntity<>(medecinMetier.signupMedecin(m), HttpStatus.CREATED);
+		return new ResponseEntity<>(med, HttpStatus.CREATED);
 		
 	}
 
