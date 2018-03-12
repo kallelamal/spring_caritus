@@ -35,4 +35,10 @@ public class MedecinMetierImpl implements MedecinMetier{
 		// TODO Auto-generated method stub
 		return medecinRepository.getMedecinByValidation(validation);
 	}
+
+	@Override
+	public Medecin getMedecinById(Long id) {
+		// TODO Auto-generated method stub
+		return medecinRepository.findOne(id);
+	}
 }
