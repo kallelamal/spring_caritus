@@ -15,18 +15,18 @@ import com.cartus.metier.AbonneMetier;
 @RestController
 public class AbonneController {
 	@Autowired
-	private  AbonneMetier abonneMetier;
+	private AbonneMetier abonneMetier;
 
-	@RequestMapping(value="/signupAbonne",method=RequestMethod.POST)
+	@RequestMapping(value = "/signupAbonne", method = RequestMethod.POST)
 	public ResponseEntity<Abonne> signupAbonne(@RequestBody Abonne a) {
-		Abonne ab= abonneMetier.signupAbonne(a);
+		Abonne ab = abonneMetier.signupAbonne(a);
 		if (ab == null)
-		       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 		return new ResponseEntity<>(ab, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value="/getAllAbonne",method=RequestMethod.GET)
+	@RequestMapping(value = "/getAllAbonne", method = RequestMethod.GET)
 	public List<Abonne> getAllAbonne() {
 		return abonneMetier.getAllAbonne();
 	}
