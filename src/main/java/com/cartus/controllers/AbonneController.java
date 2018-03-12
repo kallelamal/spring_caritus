@@ -26,11 +26,6 @@ public class AbonneController {
 		return new ResponseEntity<>(ab, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value="/signinAbonne",method=RequestMethod.GET)
-	public Abonne signinAbonne(String login, String password) {
-		return abonneMetier.signinAbonne(login, password);
-	}
-
 	@RequestMapping(value="/getAllAbonne",method=RequestMethod.GET)
 	public List<Abonne> getAllAbonne() {
 		return abonneMetier.getAllAbonne();

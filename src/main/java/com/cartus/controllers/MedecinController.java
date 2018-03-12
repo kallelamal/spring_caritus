@@ -26,11 +26,6 @@ public class MedecinController {
 	return new ResponseEntity<>(med, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value="/signinMedecin",method=RequestMethod.GET)
-	public Medecin signinMedecin(String login, String password) {
-		return medecinMetier.signinMedecin(login, password);
-	}
-
 	@RequestMapping(value="/getAllMedecin",method=RequestMethod.GET)
 	public List<Medecin> getAllMedecin() {
 		return medecinMetier.getAllMedecin();
