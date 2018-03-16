@@ -35,4 +35,10 @@ public class AdministrateurMetierImpl implements AdministrateurMetier {
 		return null;
 	}
 
+	@Override
+	public Administrateur verifUsername(String login) {
+		// TODO Auto-generated method stub
+		return administrateurRepository.verifUsername(login);
+	}
+
 }

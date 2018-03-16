@@ -31,4 +31,10 @@ public class AbonneMetierImpl implements AbonneMetier{
 		return abonneRepository.findAll();
 	}
 
+	@Override
+	public Abonne verifUsername(String login) {
+		// TODO Auto-generated method stub
+		return abonneRepository.verifUsername(login);
+	}
+
 }
