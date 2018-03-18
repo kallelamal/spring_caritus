@@ -1,8 +1,12 @@
 package com.cartus.controllers;
 
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,16 +35,25 @@ public class UserController {
 		Abonne ab = abonneMetier.signinAbonne(login, password);
 		Medecin med = medecinMetier.signinMedecin(login, password);
 		Administrateur adm = administrateurMetier.signinAdministrateur(login, password);
+		
+		if (ab != null) {
+			List<Object> result = new ArrayList<Object>();
+			result.add("abonne");
+			result.add(ab);
+			return new ResponseEntity<Object>(result, HttpStatus.OK);
 
-		if (ab == null && med == null && adm == null)
-			return false;
-		if (ab != null)
-			return ab;
-		else if (med != null)
-			return med;
-		else if (adm != null)
-			return adm;
-		return true;
+		} else if (med != null) {
+			List<Object> result = new ArrayList<Object>();
+			result.add("medecin");
+			result.add(med);
+			return new ResponseEntity<Object>(result, HttpStatus.OK);
+		} else if (adm != null) {
+			List<Object> result = new ArrayList<Object>();
+			result.add("admin");
+			result.add(adm);
+			return new ResponseEntity<Object>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/verifUsername", method = RequestMethod.POST)
