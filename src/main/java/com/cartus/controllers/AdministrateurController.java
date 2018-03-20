@@ -26,16 +26,21 @@ public class AdministrateurController {
 
 		return new ResponseEntity<>(adm, HttpStatus.CREATED);
 	}
-	/*
-	@RequestMapping(value = "/acceptmedecin", method = RequestMethod.PUT)
-	public void acceptmedecin(@RequestBody Medecin m) {
-		administrateurMetier.accepterMedecin(m);
-	}*/
 
 	@RequestMapping(value = "/acceptmedecin", method = RequestMethod.PUT)
-	public Object acceptmedecin(@RequestBody Map<String, Object> med) {
+	public Integer acceptmedecin(@RequestBody Map<String, Object> med) {
 		Long id = Long.valueOf((Integer)med.get("id"));
 		return administrateurMetier.accepterMedecin(id);
 	}
 	
+	@RequestMapping(value = "/refusermedecin", method = RequestMethod.DELETE)
+	public ResponseEntity<Void>  refuserMedecin(@RequestBody Map<String, Object> med) {
+		Long id = Long.valueOf((Integer)med.get("id"));
+		if (id == null) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		} else {
+			administrateurMetier.refuserMedecin(id);
+			return new ResponseEntity<Void>(HttpStatus.GONE);
+		}
+	}
 }

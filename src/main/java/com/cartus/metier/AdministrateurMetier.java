@@ -10,7 +10,7 @@ public interface AdministrateurMetier {
 
 	public Administrateur verifUsername(String login);
 
-	public Object accepterMedecin(Long id);
+	public Integer accepterMedecin(Long id);
 
-	public Medecin refuserMedecin(Medecin m);
+	public boolean refuserMedecin(Long id);
 }
