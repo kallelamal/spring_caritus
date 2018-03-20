@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cartus.entities.Administrateur;
-import com.cartus.entities.Medecin;
 import com.cartus.metier.AdministrateurMetier;
 
 @RestController
@@ -35,7 +34,7 @@ public class AdministrateurController {
 
 	@RequestMapping(value = "/acceptmedecin", method = RequestMethod.PUT)
 	public Object acceptmedecin(@RequestBody Map<String, Object> med) {
-		Long id = (Long) med.get("id");
+		Long id = Long.valueOf((Integer)med.get("id"));
 		return administrateurMetier.accepterMedecin(id);
 	}
 	

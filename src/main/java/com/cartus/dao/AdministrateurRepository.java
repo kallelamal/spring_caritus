@@ -3,6 +3,7 @@ package com.cartus.dao;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -16,6 +17,7 @@ public interface AdministrateurRepository extends JpaRepository<Administrateur, 
 	@Query("select i from Administrateur i where i.login like :login")
 	public Administrateur verifUsername(@Param("login") String login);
 
-	@Query("Update i from Medecin i SET i.validation=:1 WHERE i.id=:id")
-	public Object acceptermedecin(@Param("id") Long id);
+	@Modifying
+	@Query("update Medecin i SET i.validation= 1 WHERE i.id =:id")
+	public Integer acceptermedecin(@Param("id") Long id);
 }
