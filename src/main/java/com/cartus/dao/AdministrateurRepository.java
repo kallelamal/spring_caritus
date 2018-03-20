@@ -9,9 +9,13 @@ import org.springframework.data.repository.query.Param;
 import com.cartus.entities.Administrateur;
 
 @Transactional()
-public interface AdministrateurRepository extends JpaRepository<Administrateur, Long>{
+public interface AdministrateurRepository extends JpaRepository<Administrateur, Long> {
 	@Query("select i from Administrateur i where i.login like :login  and i.password like :password")
-	public Administrateur signinAdministrateur(@Param("login")String login,@Param("password")String password) ;
+	public Administrateur signinAdministrateur(@Param("login") String login, @Param("password") String password);
+
 	@Query("select i from Administrateur i where i.login like :login")
-	public Administrateur verifUsername(@Param("login")String login);
+	public Administrateur verifUsername(@Param("login") String login);
+
+	@Query("Update Medecin m SET m.validation=:validation WHERE m.id=:id")
+	public void acceptermedecin(@Param("id") Long id, @Param("validation") int validation);
 }
