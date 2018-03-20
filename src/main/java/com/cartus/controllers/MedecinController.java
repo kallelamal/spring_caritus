@@ -32,8 +32,8 @@ public class MedecinController {
 	}
 	
 	@RequestMapping(value="/getMedecinByValidation",method=RequestMethod.GET)
-	public List<Medecin> getMedecinByValidation(int validation) {
-		return medecinMetier.getMedecinByValidation(validation);
+	public List<Medecin> getMedecinByValidation() {
+		return medecinMetier.getMedecinByValidation();
 	}
 	
 	@RequestMapping(value="/getMedecinById",method=RequestMethod.GET)

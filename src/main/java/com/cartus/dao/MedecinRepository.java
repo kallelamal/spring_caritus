@@ -15,8 +15,8 @@ public interface MedecinRepository extends JpaRepository<Medecin, Long>{
 	@Query("select i from Medecin i where i.login like :login  and i.password like :password")
 	public Medecin signinMedecin(@Param("login")String login,@Param("password")String password) ;
 
-	@Query("select i from Medecin i where i.validation= :validation ")
-	public List<Medecin> getMedecinByValidation(@Param("validation")int validation) ;
+	@Query("select i from Medecin i where i.validation= 0 ")
+	public List<Medecin> getMedecinByValidation() ;
 	@Query("select i from Medecin i where i.login like :login")
 	public Medecin verifUsername(@Param("login")String login);
 

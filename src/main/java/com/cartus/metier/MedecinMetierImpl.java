@@ -31,9 +31,9 @@ public class MedecinMetierImpl implements MedecinMetier{
 	}
 
 	@Override
-	public List<Medecin> getMedecinByValidation(int validation) {
+	public List<Medecin> getMedecinByValidation() {
 		// TODO Auto-generated method stub
-		return medecinRepository.getMedecinByValidation(validation);
+		return medecinRepository.getMedecinByValidation();
 	}
 
 	@Override

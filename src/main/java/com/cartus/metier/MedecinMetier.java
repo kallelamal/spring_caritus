@@ -9,7 +9,7 @@ public interface MedecinMetier {
 	public Medecin signinMedecin(String login,String password) ;
 	public Medecin verifUsername(String login) ;
 	public List<Medecin> getAllMedecin();
-	public List<Medecin> getMedecinByValidation(int validation) ;
+	public List<Medecin> getMedecinByValidation() ;
 	public Medecin getMedecinById(Long id) ;
 
 
