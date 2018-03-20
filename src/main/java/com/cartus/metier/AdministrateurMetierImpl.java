@@ -27,10 +27,10 @@ public class AdministrateurMetierImpl implements AdministrateurMetier {
 	}
 
 	@Transactional
-	public void accepterMedecin(Medecin m) {
-		m.setValidation(1);
+	public Object accepterMedecin(Long id ) {
+		//m.setValidation(1);
 
-		administrateurRepository.acceptermedecin(m.getId(), m.getValidation());
+		return administrateurRepository.acceptermedecin(id);
 	}
 
 	@Override
