@@ -141,6 +141,5 @@ public class Abonne implements Serializable{
 				+ prenom + ", mail=" + mail + ", tel=" + tel + ", adresse=" + adresse + ", dateNaissance="
 				+ dateNaissance + "]";
 	}
-	
 
 }
