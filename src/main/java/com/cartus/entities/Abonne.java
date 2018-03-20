@@ -1,6 +1,7 @@
 package com.cartus.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,13 +25,13 @@ public class Abonne implements Serializable{
 	private String mail;
 	private String tel;
 	private String adresse;
+	private Date dateNaissance;
 	
 	public Abonne() {
 	}
 
-
 	public Abonne(Long id, String login, String password, String nom, String prenom, String mail, String tel,
-			String adresse) {
+			String adresse, Date dateNaissance) {
 		super();
 		this.id = id;
 		this.login = login;
@@ -40,8 +41,8 @@ public class Abonne implements Serializable{
 		this.mail = mail;
 		this.tel = tel;
 		this.adresse = adresse;
+		this.dateNaissance = dateNaissance;
 	}
-
 
 
 	public Long getId() {
@@ -122,7 +123,24 @@ public class Abonne implements Serializable{
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	
+
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Abonne [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", mail=" + mail + ", tel=" + tel + ", adresse=" + adresse + ", dateNaissance="
+				+ dateNaissance + "]";
+	}
 	
 
 }

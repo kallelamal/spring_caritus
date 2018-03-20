@@ -1,6 +1,7 @@
 package com.cartus.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,12 +32,13 @@ public class Medecin implements Serializable{
 	private String adresseCabinet;
 	@ColumnDefault(value="0")
 	private int validation;
+	private Date dateNaissance;
 	
 	public Medecin() {	
 	}
 
 	public Medecin(Long id, String login, String password, String nom, String prenom, String mail, String tel,
-			String specialite, String telCabinet, String adresseCabinet, int validation) {
+			String specialite, String telCabinet, String adresseCabinet, int validation, Date dateNaissance) {
 		super();
 		this.id = id;
 		this.login = login;
@@ -49,9 +51,8 @@ public class Medecin implements Serializable{
 		this.telCabinet = telCabinet;
 		this.adresseCabinet = adresseCabinet;
 		this.validation = validation;
+		this.dateNaissance = dateNaissance;
 	}
-	
-
 
 	public Long getId() {
 		return id;
@@ -146,9 +147,21 @@ public class Medecin implements Serializable{
 	public void setValidation(int validation) {
 		this.validation = validation;
 	}
-	
-	
-	
-	
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	@Override
+	public String toString() {
+		return "Medecin [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", mail=" + mail + ", tel=" + tel + ", specialite=" + specialite + ", telCabinet="
+				+ telCabinet + ", adresseCabinet=" + adresseCabinet + ", validation=" + validation + ", dateNaissance="
+				+ dateNaissance + "]";
+	}
 	
 }

@@ -8,8 +8,8 @@ import com.cartus.entities.Abonne;
 
 @Transactional()
 public interface AbonneRepository extends JpaRepository<Abonne, Long>{
-	@Query("select i from Abonne i where i.login like :login  and i.password like :password")
+	@Query("select i from Abonne i where i.login = :login  and i.password = :password")
 	public Abonne signinAbonne(@Param("login")String login,@Param("password")String password) ;
-	@Query("select i from Abonne i where i.login like :login")
+	@Query("select i from Abonne i where i.login = :login")
 	public Abonne verifUsername(@Param("login")String login);
 }
