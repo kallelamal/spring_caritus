@@ -25,6 +25,11 @@ public class ImageModel {
 	
 	public ImageModel(){}
 	
+	public ImageModel(byte[] pic){
+		
+		this.pic = pic;
+	}
+	
 	public ImageModel(long id, String name, String type, byte[] pic){
 		this.id = id;
 		this.name = name;
