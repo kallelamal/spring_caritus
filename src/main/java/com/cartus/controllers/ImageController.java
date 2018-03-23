@@ -1,36 +1,48 @@
 package com.cartus.controllers;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cartus.entities.FileInfo;
+
 
 @RestController
 public class ImageController {
 	
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String fileUpload(@RequestParam("file") MultipartFile file) {
-		System.out.println("helloupload");
-	    try {
-	        // Get the file and save it somewhere
-	        byte[] bytes = file.getBytes();
+	@Autowired
+	 ServletContext context;
 
-	        //save file in server - you may need an another scenario
-	        Path path = Paths.get("/images" + file.getOriginalFilename());
-	        Files.write(path, bytes);
-
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-
-	    //redirect to an another url end point 
-	    return "redirect:/upload-status";
-	}
+	 @RequestMapping(value = "/fileupload", headers=("content-type=multipart/*"), method = RequestMethod.POST)
+	 public ResponseEntity<FileInfo> upload(@RequestParam("file") MultipartFile inputFile) {
+	  FileInfo fileInfo = new FileInfo();
+	  HttpHeaders headers = new HttpHeaders();
+	  if (!inputFile.isEmpty()) {
+	   try {
+	    String originalFilename = inputFile.getOriginalFilename();
+	    File destinationFile = new File(context.getRealPath("/")+  File.separator + originalFilename);
+	    inputFile.transferTo(destinationFile);
+	    fileInfo.setFileName(destinationFile.getPath());
+	    fileInfo.setFileSize(inputFile.getSize());
+	    headers.add("File Uploaded Successfully - ", originalFilename);
+	    return new ResponseEntity<FileInfo>(fileInfo, headers, HttpStatus.OK);
+	   } catch (Exception e) {    
+	    return new ResponseEntity<FileInfo>(HttpStatus.BAD_REQUEST);
+	   }
+	  }else{
+	   return new ResponseEntity<FileInfo>(HttpStatus.BAD_REQUEST);
+	  }
+	 }
 }
+
+
