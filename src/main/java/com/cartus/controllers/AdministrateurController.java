@@ -33,7 +33,7 @@ public class AdministrateurController {
 		return administrateurMetier.accepterMedecin(id);
 	}
 	
-	@RequestMapping(value = "/refusermedecin", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/refusermedecin", method = RequestMethod.PUT)
 	public ResponseEntity<Boolean> refuserMedecin(@RequestBody Map<String, Object> med) {
 		Long id = Long.valueOf((Integer)med.get("id"));
 		if (id == null) {
