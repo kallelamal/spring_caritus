@@ -47,4 +47,10 @@ public class MedecinMetierImpl implements MedecinMetier{
 		// TODO Auto-generated method stub
 		return medecinRepository.verifUsername(login)	;
 	}
+
+	@Override
+	public Medecin updateMedecin(Medecin m) {
+		// TODO Auto-generated method stub
+		return medecinRepository.saveAndFlush(m);
+	}
 }

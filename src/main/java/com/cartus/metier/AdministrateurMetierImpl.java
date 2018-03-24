@@ -17,12 +17,6 @@ public class AdministrateurMetierImpl implements AdministrateurMetier {
 	private MedecinRepository MedecinRepositrory;
 
 	@Override
-	public Administrateur signupAdministrateur(Administrateur a) {
-
-		return administrateurRepository.save(a);
-	}
-
-	@Override
 	public Administrateur signinAdministrateur(String login, String password) {
 
 		return administrateurRepository.signinAdministrateur(login, password);
@@ -31,12 +25,6 @@ public class AdministrateurMetierImpl implements AdministrateurMetier {
 	@Transactional
 	public Integer accepterMedecin(Long id ) {
 		return administrateurRepository.acceptermedecin(id);
-	}
-
-	@Override
-	public Administrateur verifUsername(String login) {
-		// TODO Auto-generated method stub
-		return administrateurRepository.verifUsername(login);
 	}
 
 	@Override

@@ -18,15 +18,6 @@ public class AdministrateurController {
 	@Autowired
 	private AdministrateurMetier administrateurMetier;
 
-	@RequestMapping(value = "/signupAdministrateur", method = RequestMethod.POST)
-	public ResponseEntity<Administrateur> signupAdministrateur(@RequestBody Administrateur a) {
-		Administrateur adm = administrateurMetier.signupAdministrateur(a);
-		if (adm == null)
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-		return new ResponseEntity<>(adm, HttpStatus.CREATED);
-	}
-
 	@RequestMapping(value = "/acceptmedecin", method = RequestMethod.PUT)
 	public Integer acceptmedecin(@RequestBody Map<String, Object> med) {
 		Long id = Long.valueOf((Integer)med.get("id"));

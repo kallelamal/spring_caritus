@@ -14,9 +14,6 @@ public interface AdministrateurRepository extends JpaRepository<Administrateur, 
 	@Query("select i from Administrateur i where i.login = :login  and i.password = :password")
 	public Administrateur signinAdministrateur(@Param("login") String login, @Param("password") String password);
 
-	@Query("select i from Administrateur i where i.login = :login")
-	public Administrateur verifUsername(@Param("login") String login);
-
 	@Modifying
 	@Query("update Medecin i SET i.validation= 1 WHERE i.id =:id")
 	public Integer acceptermedecin(@Param("id") Long id);

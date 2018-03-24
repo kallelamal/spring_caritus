@@ -37,4 +37,23 @@ public class AbonneMetierImpl implements AbonneMetier{
 		return abonneRepository.verifUsername(login);
 	}
 
+	@Override
+	public Abonne updateAbonne(Abonne a) {
+		// TODO Auto-generated method stub
+		return abonneRepository.saveAndFlush(a);
+	}
+
+	@Override
+	public boolean deleteAbonne(Long id) {
+		// TODO Auto-generated method stub
+		 abonneRepository.delete(id);
+		 return true;
+	}
+
+	@Override
+	public Abonne getAbonneById(Long id) {
+		// TODO Auto-generated method stub
+		return abonneRepository.findOne(id);
+	}
+
 }

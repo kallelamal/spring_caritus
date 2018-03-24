@@ -61,10 +61,9 @@ public class UserController {
 		String login = (String) Sign.get("login");
 		Abonne ab = abonneMetier.verifUsername(login);
 		Medecin med = medecinMetier.verifUsername(login);
-		Administrateur adm = administrateurMetier.verifUsername(login);
-		if (ab == null && med == null && adm == null)
+		if (ab == null && med == null )
 			return false;
-		else if (ab != null || med != null || adm != null)
+		else if (ab != null || med != null )
 			return true;
 		return true;
 	}

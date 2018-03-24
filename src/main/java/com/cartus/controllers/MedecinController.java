@@ -40,4 +40,10 @@ public class MedecinController {
 	public Medecin getMedecinById(Long id) {
 		return medecinMetier.getMedecinById(id);
 	}
+	
+	@RequestMapping(value = "/updateMedecin", method = RequestMethod.PUT)
+	public Medecin updateMedecin(@RequestBody Medecin m) {
+		return medecinMetier.updateMedecin(m);
+	}
+
 }
