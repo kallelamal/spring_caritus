@@ -19,5 +19,7 @@ public interface MedecinMetier {
 	
 	public Medecin updateMedecin(Medecin m);
 
+	public boolean deleteMedecin(Long id);
+
 
 }

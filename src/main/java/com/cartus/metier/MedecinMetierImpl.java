@@ -47,6 +47,12 @@ public class MedecinMetierImpl implements MedecinMetier{
 		// TODO Auto-generated method stub
 		return medecinRepository.verifUsername(login)	;
 	}
+	
+	@Override
+	public boolean deleteMedecin(Long id) {
+		medecinRepository.delete(id);
+		 return true;
+	}
 
 	@Override
 	public Medecin updateMedecin(Medecin m) {

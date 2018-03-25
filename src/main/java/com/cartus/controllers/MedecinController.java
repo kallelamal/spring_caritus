@@ -1,6 +1,8 @@
 package com.cartus.controllers;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +46,16 @@ public class MedecinController {
 	@RequestMapping(value = "/updateMedecin", method = RequestMethod.PUT)
 	public Medecin updateMedecin(@RequestBody Medecin m) {
 		return medecinMetier.updateMedecin(m);
+	}
+	@RequestMapping(value = "/deleteMedecin", method = RequestMethod.PUT)
+	public ResponseEntity<Boolean> refuserMedecin(@RequestBody Map<String, Object> med) {
+		Long id = Long.valueOf((Integer)med.get("id"));
+		if (id == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			medecinMetier.deleteMedecin(id);
+			return new ResponseEntity<Boolean>(true,HttpStatus.OK);
+		}
 	}
 
 }
