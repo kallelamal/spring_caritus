@@ -43,4 +43,14 @@ public class AbonneController {
 			return new ResponseEntity<Boolean>(true,HttpStatus.OK);
 		}
 	}
+	
+	@RequestMapping(value="/getAbonneById",method=RequestMethod.GET)
+	public Abonne getAbonneById(Long id) {
+		return abonneMetier.getAbonneById(id);
+	}
+	
+	@RequestMapping(value = "/updateAbonne", method = RequestMethod.PUT)
+	public Abonne updateAbonne(@RequestBody Abonne a) {
+		return abonneMetier.updateAbonne(a);
+	}
 }
