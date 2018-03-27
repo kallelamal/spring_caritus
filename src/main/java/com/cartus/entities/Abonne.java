@@ -26,6 +26,7 @@ public class Abonne implements Serializable{
 	private String tel;
 	private String adresse;
 	private Date dateNaissance;
+	private String image_src;
 	
 	public Abonne() {
 	}
@@ -43,7 +44,23 @@ public class Abonne implements Serializable{
 		this.adresse = adresse;
 		this.dateNaissance = dateNaissance;
 	}
+	
 
+
+	public Abonne(Long id, String login, String password, String nom, String prenom, String mail, String tel,
+			String adresse, Date dateNaissance, String image_src) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.tel = tel;
+		this.adresse = adresse;
+		this.dateNaissance = dateNaissance;
+		this.image_src = image_src;
+	}
 
 	public Long getId() {
 		return id;
@@ -133,7 +150,16 @@ public class Abonne implements Serializable{
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
+	
 
+
+	public String getImage_src() {
+		return image_src;
+	}
+
+	public void setImage_src(String image_src) {
+		this.image_src = image_src;
+	}
 
 	@Override
 	public String toString() {
