@@ -1,6 +1,8 @@
 package com.cartus.controllers;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +31,16 @@ public class AbonneController {
 	@RequestMapping(value = "/getAllAbonne", method = RequestMethod.GET)
 	public List<Abonne> getAllAbonne() {
 		return abonneMetier.getAllAbonne();
+	}
+	
+	@RequestMapping(value = "/deleteAbonne", method = RequestMethod.PUT)
+	public ResponseEntity<Boolean> deleteAbonne(@RequestBody Map<String, Object> abn) {
+		Long id = Long.valueOf((Integer)abn.get("id"));
+		if (id == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			abonneMetier.deleteAbonne(id);
+			return new ResponseEntity<Boolean>(true,HttpStatus.OK);
+		}
 	}
 }
