@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 public class Abonne implements Serializable{
 	
@@ -26,6 +28,7 @@ public class Abonne implements Serializable{
 	private String tel;
 	private String adresse;
 	private Date dateNaissance;
+	@ColumnDefault(value="null")
 	private String image_src;
 	
 	public Abonne() {
@@ -165,7 +168,9 @@ public class Abonne implements Serializable{
 	public String toString() {
 		return "Abonne [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
 				+ prenom + ", mail=" + mail + ", tel=" + tel + ", adresse=" + adresse + ", dateNaissance="
-				+ dateNaissance + "]";
+				+ dateNaissance + ", image_src=" + image_src + "]";
 	}
+
+	
 
 }

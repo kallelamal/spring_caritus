@@ -22,7 +22,6 @@ public class Medecin implements Serializable{
     @Column(unique = true)
 	private String login;
     private String password;
-    
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -33,6 +32,9 @@ public class Medecin implements Serializable{
 	@ColumnDefault(value="0")
 	private int validation;
 	private Date dateNaissance;
+	@ColumnDefault(value="null")
+	private String image_src;
+
 	
 	public Medecin() {	
 	}
@@ -52,6 +54,26 @@ public class Medecin implements Serializable{
 		this.adresseCabinet = adresseCabinet;
 		this.validation = validation;
 		this.dateNaissance = dateNaissance;
+	}
+	
+
+	public Medecin(Long id, String login, String password, String nom, String prenom, String mail, String tel,
+			String specialite, String telCabinet, String adresseCabinet, int validation, Date dateNaissance,
+			String image_src) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.tel = tel;
+		this.specialite = specialite;
+		this.telCabinet = telCabinet;
+		this.adresseCabinet = adresseCabinet;
+		this.validation = validation;
+		this.dateNaissance = dateNaissance;
+		this.image_src = image_src;
 	}
 
 	public Long getId() {
@@ -155,13 +177,23 @@ public class Medecin implements Serializable{
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
+	
+	public String getImage_src() {
+		return image_src;
+	}
+
+	public void setImage_src(String image_src) {
+		this.image_src = image_src;
+	}
 
 	@Override
 	public String toString() {
 		return "Medecin [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
 				+ prenom + ", mail=" + mail + ", tel=" + tel + ", specialite=" + specialite + ", telCabinet="
 				+ telCabinet + ", adresseCabinet=" + adresseCabinet + ", validation=" + validation + ", dateNaissance="
-				+ dateNaissance + "]";
+				+ dateNaissance + ", image_src=" + image_src + "]";
 	}
+
+	
 	
 }
