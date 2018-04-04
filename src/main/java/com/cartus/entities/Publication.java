@@ -23,7 +23,11 @@ public class Publication implements Serializable{
 	private String description;
     private String zone;
 	private Date datePub;
-	@OneToMany(mappedBy="id_pub",fetch=FetchType.LAZY)
+	private String pub_mode;
+	private boolean consultation_domicile;
+	private float position_long;
+	private float position_lat;
+	@OneToMany(mappedBy="publication",fetch=FetchType.LAZY)
 	private List<Reponse> reponses;
 	@ManyToOne
 	@JoinColumn(name="id_abonne")
@@ -41,8 +45,23 @@ public class Publication implements Serializable{
 		this.reponses = reponses;
 		this.abonne = abonne;
 	}
+	
 
-
+	public Publication(Long id, String description, String zone, Date datePub, String pub_mode,
+			boolean consultation_domicile, float position_long, float position_lat, List<Reponse> reponses,
+			Abonne abonne) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.zone = zone;
+		this.datePub = datePub;
+		this.pub_mode = pub_mode;
+		this.consultation_domicile = consultation_domicile;
+		this.position_long = position_long;
+		this.position_lat = position_lat;
+		this.reponses = reponses;
+		this.abonne = abonne;
+	}
 
 	public Long getId() {
 		return id;
@@ -76,37 +95,63 @@ public class Publication implements Serializable{
 		this.datePub = datePub;
 	}
 
-
-
 	public List<Reponse> getReponses() {
 		return reponses;
 	}
-
-
 
 	public void setReponses(List<Reponse> reponses) {
 		this.reponses = reponses;
 	}
 
-
-
 	public Abonne getAbonne() {
 		return abonne;
 	}
-
-
 
 	public void setAbonne(Abonne abonne) {
 		this.abonne = abonne;
 	}
 
+	public String getPub_mode() {
+		return pub_mode;
+	}
 
+	public void setPub_mode(String pub_mode) {
+		this.pub_mode = pub_mode;
+	}
+
+	public boolean isConsultation_domicile() {
+		return consultation_domicile;
+	}
+
+	public void setConsultation_domicile(boolean consultation_domicile) {
+		this.consultation_domicile = consultation_domicile;
+	}
+
+	public float getPosition_long() {
+		return position_long;
+	}
+
+	public void setPosition_long(float position_long) {
+		this.position_long = position_long;
+	}
+
+	public float getPosition_lat() {
+		return position_lat;
+	}
+
+	public void setPosition_lat(float position_lat) {
+		this.position_lat = position_lat;
+	}
 
 	@Override
 	public String toString() {
-		return "publication [id=" + id + ", description=" + description + ", zone=" + zone + ", datePub=" + datePub
-				+ ", reponses=" + reponses + "]";
+		return "Publication [id=" + id + ", description=" + description + ", zone=" + zone + ", datePub=" + datePub
+				+ ", pub_mode=" + pub_mode + ", consultation_domicile=" + consultation_domicile + ", position_long="
+				+ position_long + ", position_lat=" + position_lat + ", reponses=" + reponses + ", abonne=" + abonne
+				+ "]";
 	}
+	
+
 	
 	
 

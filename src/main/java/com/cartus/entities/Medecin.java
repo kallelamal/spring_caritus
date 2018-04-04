@@ -37,7 +37,7 @@ public class Medecin implements Serializable{
 	private Date dateNaissance;
 	@ColumnDefault(value="null")
 	private String image_src;
-	@OneToMany(mappedBy="id_med",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="medecin",fetch=FetchType.LAZY)
 	private List<Reponse> lstreponses;
 
 	

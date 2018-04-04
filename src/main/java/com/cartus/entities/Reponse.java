@@ -22,26 +22,22 @@ public class Reponse implements Serializable{
     private Date dateRep;
 	@ManyToOne
 	@JoinColumn(name="id_pub")
-	private Publication pub;
+	private Publication publication;
 	@ManyToOne
 	@JoinColumn(name="id_med")
 	private Medecin medecin;
-	public Reponse() {
 	
+	public Reponse() {
 	}
 
-	
-
-	public Reponse(Long id, String message, Date dateRep, Publication pub, Medecin medecin) {
+	public Reponse(Long id, String message, Date dateRep, Publication publication, Medecin medecin) {
 		super();
 		this.id = id;
 		this.message = message;
 		this.dateRep = dateRep;
-		this.pub = pub;
+		this.publication = publication;
 		this.medecin = medecin;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -73,16 +69,14 @@ public class Reponse implements Serializable{
 
 
 	public Publication getPub() {
-		return pub;
+		return publication;
 	}
 
 
 
-	public void setPub(Publication pub) {
-		this.pub = pub;
+	public void setPub(Publication publication) {
+		this.publication = publication;
 	}
-
-
 
 	public Medecin getMedecin() {
 		return medecin;

@@ -33,7 +33,7 @@ public class Abonne implements Serializable{
 	private Date dateNaissance;
 	@ColumnDefault(value="null")
 	private String image_src;
-	@OneToMany(mappedBy="id_abonne",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="abonne",fetch=FetchType.LAZY)
 	private List<Publication> publications;
 	
 	public Abonne() {
