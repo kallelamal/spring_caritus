@@ -2,12 +2,15 @@ package com.cartus.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -34,6 +37,8 @@ public class Medecin implements Serializable{
 	private Date dateNaissance;
 	@ColumnDefault(value="null")
 	private String image_src;
+	@OneToMany(mappedBy="id_med",fetch=FetchType.LAZY)
+	private List<Reponse> lstreponses;
 
 	
 	public Medecin() {	
@@ -74,6 +79,27 @@ public class Medecin implements Serializable{
 		this.validation = validation;
 		this.dateNaissance = dateNaissance;
 		this.image_src = image_src;
+	}
+	
+
+	public Medecin(Long id, String login, String password, String nom, String prenom, String mail, String tel,
+			String specialite, String telCabinet, String adresseCabinet, int validation, Date dateNaissance,
+			String image_src, List<Reponse> lstreponses) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.tel = tel;
+		this.specialite = specialite;
+		this.telCabinet = telCabinet;
+		this.adresseCabinet = adresseCabinet;
+		this.validation = validation;
+		this.dateNaissance = dateNaissance;
+		this.image_src = image_src;
+		this.lstreponses = lstreponses;
 	}
 
 	public Long getId() {
@@ -184,6 +210,15 @@ public class Medecin implements Serializable{
 
 	public void setImage_src(String image_src) {
 		this.image_src = image_src;
+	}
+	
+
+	public List<Reponse> getLstreponses() {
+		return lstreponses;
+	}
+
+	public void setLstreponses(List<Reponse> lstreponses) {
+		this.lstreponses = lstreponses;
 	}
 
 	@Override
