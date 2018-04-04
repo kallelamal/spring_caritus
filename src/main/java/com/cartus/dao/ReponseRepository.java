@@ -8,6 +8,6 @@ import com.cartus.entities.Reponse;
 
 
 @Transactional()
-public interface reponseRepository extends JpaRepository<Reponse, Long> {
+public interface ReponseRepository extends JpaRepository<Reponse, Long> {
 
 }
