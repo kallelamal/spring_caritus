@@ -12,7 +12,7 @@ import com.cartus.entities.Medecin;
 
 @Transactional()
 public interface MedecinRepository extends JpaRepository<Medecin, Long>{
-	@Query("select i from Medecin i where i.login like :login  and i.password like :password")
+	@Query("select i from Medecin i where i.login like :login  and i.password like :password and validation=1")
 	public Medecin signinMedecin(@Param("login")String login,@Param("password")String password) ;
 
 	@Query("select i from Medecin i where i.validation=1 ")

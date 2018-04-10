@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cartus.dao.PublicationRepository;
 import com.cartus.dao.ReponseRepository;
 import com.cartus.entities.Reponse;
 @Service
