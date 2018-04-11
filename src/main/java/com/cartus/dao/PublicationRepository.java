@@ -9,7 +9,7 @@ import com.cartus.entities.Publication;
 @Transactional()
 public interface PublicationRepository extends JpaRepository<Publication,Long> {
 
-	@Query("select i from Medecin i where i.specialite = :specialite")
+	@Query("select i from Medecin i where i.specialite like :specialite")
 	public Medecin getPublicationByspecialite(@Param("specialite")String specialite) ;
 
 	

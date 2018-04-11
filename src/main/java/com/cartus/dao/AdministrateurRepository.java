@@ -11,10 +11,10 @@ import com.cartus.entities.Administrateur;
 
 @Transactional()
 public interface AdministrateurRepository extends JpaRepository<Administrateur, Long> {
-	@Query("select i from Administrateur i where i.login = :login  and i.password = :password")
+	@Query("select i from Administrateur i where i.login like :login  and i.password like :password")
 	public Administrateur signinAdministrateur(@Param("login") String login, @Param("password") String password);
 
 	@Modifying
-	@Query("update Medecin i SET i.validation= 1 WHERE i.id =:id")
+	@Query("update Medecin i SET i.validation= 1 WHERE i.id like :id")
 	public Integer acceptermedecin(@Param("id") Long id);
 }
