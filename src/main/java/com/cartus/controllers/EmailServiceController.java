@@ -22,7 +22,6 @@ public class EmailServiceController {
 	@ResponseBody
 	private String sendEmail(@RequestBody Map<String, Object> mail) throws Exception {
 		try {
-			System.out.println(mail.toString());
 			String to;
 			String text;
 			String subject;
