@@ -1,7 +1,10 @@
 package com.cartus.entities;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,33 +15,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+
 @Entity
-public class Publication implements Serializable{
+public class Publication implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String description;
-    private String zone;
+	private String zone;
 	private Date datePub;
 	private String pub_mode;
 	private boolean consultation_domicile;
 	private float position_long;
 	private float position_lat;
-	@JsonManagedReference
-	@OneToMany(mappedBy="publication",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "publication", fetch = FetchType.LAZY)
 	private List<Reponse> reponses;
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name="id_abonne")
-	private Abonne abonne ;
+	//@JsonBackReference
+	//@JsonManagedReference
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_abonne")
+	private Abonne abonne;
+
 	public Publication() {
-		
+
 	}
 
 	public Publication(Long id, String description, String zone, Date datePub, List<Reponse> reponses, Abonne abonne) {
@@ -50,7 +56,6 @@ public class Publication implements Serializable{
 		this.reponses = reponses;
 		this.abonne = abonne;
 	}
-	
 
 	public Publication(Long id, String description, String zone, Date datePub, String pub_mode,
 			boolean consultation_domicile, float position_long, float position_lat, List<Reponse> reponses,
@@ -155,9 +160,5 @@ public class Publication implements Serializable{
 				+ position_long + ", position_lat=" + position_lat + ", reponses=" + reponses + ", abonne=" + abonne
 				+ "]";
 	}
-	
-
-	
-	
 
 }

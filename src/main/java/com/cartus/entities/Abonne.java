@@ -4,15 +4,22 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ColumnDefault;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Abonne implements Serializable{
@@ -33,9 +40,10 @@ public class Abonne implements Serializable{
 	private Date dateNaissance;
 	@ColumnDefault(value="null")
 	private String image_src;
-	@OneToMany(mappedBy="abonne",fetch=FetchType.LAZY)
+	//@JsonManagedReference
+	//@JsonBackReference
+	@OneToMany(mappedBy="abonne",cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Publication> publications;
-	
 	public Abonne() {
 	}
 
@@ -186,7 +194,7 @@ public class Abonne implements Serializable{
 		this.image_src = image_src;
 	}
 
-	
+	@JsonIgnore
 	public List<Publication> getPublications() {
 		return publications;
 	}
