@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Medecin implements Serializable{
 
@@ -212,7 +214,7 @@ public class Medecin implements Serializable{
 		this.image_src = image_src;
 	}
 	
-
+	@JsonIgnore
 	public List<Reponse> getLstreponses() {
 		return lstreponses;
 	}
