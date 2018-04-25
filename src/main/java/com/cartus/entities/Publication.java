@@ -16,8 +16,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 
 @Entity
 public class Publication implements Serializable {
@@ -35,10 +35,10 @@ public class Publication implements Serializable {
 	private boolean consultation_domicile;
 	private float position_long;
 	private float position_lat;
-	@OneToMany(mappedBy = "publication", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "publication",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Reponse> reponses;
-	//@JsonBackReference
-	//@JsonManagedReference
+	// @JsonBackReference
+	// @JsonManagedReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_abonne")
 	private Abonne abonne;

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reponse implements Serializable{
 	/**
@@ -67,7 +69,7 @@ public class Reponse implements Serializable{
 	}
 
 
-
+    @JsonIgnore
 	public Publication getPub() {
 		return publication;
 	}
